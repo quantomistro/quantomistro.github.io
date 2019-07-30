@@ -3,12 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://quantomistro.github.io/tags/</loc>
-    <priority>0</priority>
+    <loc>https://quantomistro.github.io/about/</loc>
+    <lastmod>2019-07-15T15:37:45+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://quantomistro.github.io/</loc>
+    <lastmod>2019-07-15T15:37:45+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://quantomistro.github.io/posts/</loc>
+    <lastmod>2019-07-15T00:38:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://quantomistro.github.io/posts/starting-a-blog/</loc>
+    <lastmod>2019-07-15T00:38:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://quantomistro.github.io/tags/</loc>
+    <lastmod>2019-07-15T00:38:43+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://quantomistro.github.io/tags/misc/</loc>
+    <lastmod>2019-07-15T00:38:43+08:00</lastmod>
     <priority>0</priority>
   </url>
   
