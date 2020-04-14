@@ -13,12 +13,12 @@
     
     
     <item>
-      <title>GUI With Javafx</title>
-      <link>https://quantomistro.github.io/posts/gui-with-javafx/</link>
+      <title>GUI With JavaFX (1)</title>
+      <link>https://quantomistro.github.io/posts/gui-with-javafx-1/</link>
       <pubDate>Sun, 12 Apr 2020 18:00:47 +0800</pubDate>
       
-      <guid>https://quantomistro.github.io/posts/gui-with-javafx/</guid>
-      <description>For International Baccalaureate (IB) students, around 20% of their grade (i think?) depends on their Internal Assessments (IAs) in each course. Each course has its own requirements for their IA. For Computer Science students, the IA is basically finding a &amp;ldquo;client&amp;rdquo; with problem X and then building a program to solve that problem for them - an exercise in software development. Now at any given time, I usually have a list of cool ideas and programs I want to build someday to make the world a happier place - but none of them were risk-free enough for an assignment that would account for 20% of my final grade.</description>
+      <guid>https://quantomistro.github.io/posts/gui-with-javafx-1/</guid>
+      <description>For International Baccalaureate (IB) students, around 20% of their grade (i think?) depends on their Internal Assessments (IAs) in each course. Each course has its own requirements for the IA. For Computer Science students, the IA is basically finding a &amp;ldquo;client&amp;rdquo; with problem X and then building a program to solve that problem for them - an exercise in software development. Now at any given time, I usually have a list of cool ideas and programs I want to build someday to make the world a happier place - but none of them were risk-free enough for an assignment that would account for 20% of my final grade.</description>
     </item>
     
   </channel>

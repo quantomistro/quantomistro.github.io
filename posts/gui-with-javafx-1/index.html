@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#2b3149">
+	<meta name="msapplication-TileColor" content="#2b3149">
+
+<meta itemprop="name" content="GUI With JavaFX (1)">
+<meta itemprop="description" content="For International Baccalaureate (IB) students, around 20% of their grade (i think?) depends on their Internal Assessments (IAs) in each course. Each course has its own requirements for the IA. For Computer Science students, the IA is basically finding a &ldquo;client&rdquo; with problem X and then building a program to solve that problem for them - an exercise in software development. Now at any given time, I usually have a list of cool ideas and programs I want to build someday to make the world a happier place - but none of them were risk-free enough for an assignment that would account for 20% of my final grade.">
+
+
+<meta itemprop="datePublished" content="2020-04-12T18:00:47&#43;08:00" />
+<meta itemprop="dateModified" content="2020-04-12T18:00:47&#43;08:00" />
+<meta itemprop="wordCount" content="1666">
+
+
+
+<meta itemprop="keywords" content="tutorial," />
+<meta property="og:title" content="GUI With JavaFX (1)" />
+<meta property="og:description" content="For International Baccalaureate (IB) students, around 20% of their grade (i think?) depends on their Internal Assessments (IAs) in each course. Each course has its own requirements for the IA. For Computer Science students, the IA is basically finding a &ldquo;client&rdquo; with problem X and then building a program to solve that problem for them - an exercise in software development. Now at any given time, I usually have a list of cool ideas and programs I want to build someday to make the world a happier place - but none of them were risk-free enough for an assignment that would account for 20% of my final grade." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://quantomistro.github.io/posts/gui-with-javafx-1/" />
+<meta property="article:published_time" content="2020-04-12T18:00:47&#43;08:00"/>
+<meta property="article:modified_time" content="2020-04-12T18:00:47&#43;08:00"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GUI With JavaFX (1)"/>
+<meta name="twitter:description" content="For International Baccalaureate (IB) students, around 20% of their grade (i think?) depends on their Internal Assessments (IAs) in each course. Each course has its own requirements for the IA. For Computer Science students, the IA is basically finding a &ldquo;client&rdquo; with problem X and then building a program to solve that problem for them - an exercise in software development. Now at any given time, I usually have a list of cool ideas and programs I want to build someday to make the world a happier place - but none of them were risk-free enough for an assignment that would account for 20% of my final grade."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>GUI With JavaFX (1)</title>
+	<link rel="stylesheet" href="https://quantomistro.github.io/css/style.min.568c54a56780af2a70c45272522247710b69dbfc080b315211fb98381e3796f8.css" integrity="sha256-VoxUpWeArypwxFJyUiJHcQtp2/wICzFSEfuYOB43lvg=">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://quantomistro.github.io/">quantomistro</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://quantomistro.github.io/posts/">Posts</a>
+				<a href="https://quantomistro.github.io/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/quantomistro" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://codepen.io/quantomistro" target="_blank" rel="noopener me" title="Codepen"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codepen"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg></a><a href="https://twitter.com/quantomistro" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://quantomistro.github.io/posts/">Posts</a></li>
+			<li><a href="https://quantomistro.github.io/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Apr 12, 2020</span></div>
+				<h1>GUI With JavaFX (1)</h1>
+			</header>
+			<div class="content">
+				
+
+<p>For International Baccalaureate (IB) students, around 20% of their grade (i think?) depends on their Internal Assessments (IAs) in each course. Each course has its own requirements for the IA. For Computer Science students, the IA is basically finding a &ldquo;client&rdquo; with problem X and then building a program to solve that problem for them - an exercise in software development. Now at any given time, I usually have a list of cool ideas and programs I want to build someday to make the world a happier place - but none of them were risk-free enough for an assignment that would account for 20% of my final grade. So I decided to go with the flow and do something similar to what my fellow classmates were doing - a basic CRUD program in Java, using a MySQL database, hooked to a GUI built with Swing.</p>
+
+<p>Except, that&rsquo;s not exactly what I did - I&rsquo;ve already tried (and failed 🙁) on multiple occasions to build a native GUI application, so I&rsquo;ve already looked at some of the options available out there for building GUIs. I&rsquo;d heard of both Swing and JavaFX, and had been told that JavaFX is Swing&rsquo;s successor. So I decided to use JavaFX instead. The program itself (for my IA) is far from finished, and there&rsquo;s still lots that I don&rsquo;t understand about JavaFX - but, slowly yet surely, I&rsquo;m getting the hang of it. This post is going to be part-tutorial and part-me-talking-about-what-I-achieved trying to use JavaFX.</p>
+
+<h2 id="setup">Setup<a href="#setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>Here&rsquo;s what I&rsquo;m using for my development:</p>
+
+<ul>
+<li>Java 8 (up to 11 should also be fine, I think)</li>
+<li>Visual Studio Code</li>
+<li>Gradle (v5.6.2)</li>
+<li>Gluon SceneBuilder</li>
+</ul>
+
+<p>You should probably already have Java installed, if you&rsquo;re reading this article. I prefer to use VSCode for most of my development, so I won&rsquo;t be using Eclipse or IntelliJ. If you use either of those, you probably won&rsquo;t need a build tool like Gradle. Gluon SceneBuilder is a GUI app for, well, building the scenes (or the interfaces) for our JavaFX application. It&rsquo;ll make life easier for us. You can install it <a href="https://gluonhq.com/products/scene-builder/">here</a>. If you also decided to use Gradle, you can find out how to install it from <a href="https://gradle.org/install/">here</a>.</p>
+
+<h2 id="creating-a-gradle-project">Creating a Gradle project<a href="#creating-a-gradle-project" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<blockquote>
+<p>If you&rsquo;re using an IDE like Eclipse or IntelliJ, you can skip the Gradle-specific parts.</p>
+</blockquote>
+
+<p>Create a directory for your project, <code>cd</code> into it and run <code>gradle init</code>. It&rsquo;ll ask you stuff about your project:</p>
+
+<pre><code>PS E:\_\source\quantomistro\_misc\project&gt; gradle init
+Select type of project to generate:
+  1: basic
+  2: application
+  3: library
+  4: Gradle plugin
+Enter selection (default: basic) [1..4] 2
+
+Select implementation language:
+  1: C++
+  2: Groovy
+  3: Java
+  4: Kotlin
+  5: Swift
+Enter selection (default: Java) [1..5] 3
+
+Select build script DSL:
+  1: Groovy
+  2: Kotlin
+Enter selection (default: Groovy) [1..2] 1
+
+Select test framework:
+  1: JUnit 4
+  2: TestNG
+  3: Spock
+  4: JUnit Jupiter
+Enter selection (default: JUnit 4) [1..4] 1
+Enter Project name (default: project): project
+Enter source package (default: project): project
+</code></pre>
+
+<p>The type of project will be &lsquo;application&rsquo; - option 2. This will generate some useful gradle tasks for us. The implementation language is, obviously, java. The build script DSL I&rsquo;m using is Groovy - if you have no idea what this is for, then you should probably choose groovy as well because it&rsquo;s not very relevant here. The test framework isn&rsquo;t very relevant either, because I&rsquo;m a bad programmer who&rsquo;s too lazy to write tests (obviously joking - please make sure you write proper tests for all your code!).</p>
+
+<p>It&rsquo;ll also ask for your project name and source package. The defaults should be fine.</p>
+
+<p>Once that&rsquo;s done, it&rsquo;ll generate a few files and sub-directories:</p>
+
+<pre><code>project/
+   .gitignore
+   build.gradle
+   gradlew
+   gradlew.bat
+   settings.gradle
+   .gradle/
+   gradle/
+   src/
+      main/
+      test/
+</code></pre>
+
+<p>There&rsquo;s build files and settings files and some other directories gradle uses, but we mostly won&rsquo;t need to concern ourselves with those. We&rsquo;ll be working in the <code>src/main</code> directory most of the time.</p>
+
+<h2 id="using-the-scenebuilder">Using the SceneBuilder<a href="#using-the-scenebuilder" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>Now is probably a good time to introduce JavaFX&rsquo;s idea of &lsquo;stages&rsquo; and &lsquo;scenes&rsquo; - a &lsquo;stage&rsquo;, as far as I understand, represents a &lsquo;window&rsquo;, on top of which you have &lsquo;scenes&rsquo; which describe your interface. You can use the SceneBuilder to create and edit these scenes. The SceneBuilder will then output .fxml files (XML that describes the interface, similar to HTML) for these scenes, and you can then use Java to load these scenes into your JavaFX stage,to be displayed to the user. We&rsquo;ll get to that part later on. Right now, we&rsquo;re going to create a simple scene for ourselves using the SceneBuilder.</p>
+
+<p>Fire up the SceneBuilder, and choose &lsquo;New Project&rsquo;. You&rsquo;ll see a few options you can start with - empty, basic and complex for desktop, and then empty and basic for mobile. For now, just go ahead and choose the empty option at the beginning.</p>
+
+<p><img src="/gui-with-javafx-1/Layout_Options.png" alt="Scenebuilder Project Options" /></p>
+
+<p>You should see two sidebars on your left and right, and then your GUI in the middle. On the left sidebar, under &lsquo;Library&rsquo;, you&rsquo;ll see lots and lots of the components that JavaFX provides for you to build your interface. This includes stuff like input fields, labels, buttons, panes, and so on. There&rsquo;s also a handy search bar for these at the top. After that, under &lsquo;Document&rsquo; you&rsquo;ll see your hierarchy - basically, how your GUI components are structured in the underlying FXML. There&rsquo;s also a &lsquo;Controller&rsquo; tab below that - this is for our Java code associated with this scene. Usually, you&rsquo;ll have a controller for each scene. This helps us nicely organize our UI and logic.</p>
+
+<p><img src="/gui-with-javafx-1/Left_Sidebar.png" alt="Left Sidebar" /></p>
+
+<p>Then, on the right sidebar, you have the &lsquo;Inspector&rsquo; tab, which will show you the properties, layout and associated code for the selected component.</p>
+
+<p><img src="/gui-with-javafx-1/Right_Sidebar.png" alt="Right Sidebar" /></p>
+
+<h2 id="a-simple-login-form">A simple login form<a href="#a-simple-login-form" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+
+<p>For this example, we&rsquo;ll build a very very simple login form. Go to the Library, look for &lsquo;VBox&rsquo;, and drag it to the center. It should also show up in your hierarchy on the left sidebar.</p>
+
+<p><img src="/gui-with-javafx-1/Select_VBox.png" alt="Select VBox" /></p>
+
+<p>One cool thing about JavaFX is that, aside from being able to use FXML to describe your interface, it also allows us to use CSS to style our elements. The Scenebuilder allows us to easily add, edit and remove the CSS rules for our elements. Let&rsquo;s try that out by giving our form a dark theme.</p>
+
+<p>First, select the VBox element we just added to the hierarchy. You should see all its properties in the right sidebar. Go to the &lsquo;JavaFX CSS&rsquo; section, and click the input field under &lsquo;Style&rsquo;. Select <code>-fx-background-color</code> from the drop-down menu that pops up (if it doesn&rsquo;t, just type it in). Then on the right, enter the value for this property. I went with <code>#333333</code>. You should see the GUI in the middle update as well.</p>
+
+<p><img src="/gui-with-javafx-1/Set_Bg_Color.png" alt="Set Background Color" /></p>
+
+<p>Next, go to the library and look for &lsquo;HBox&rsquo;, and add it to your hierarchy. By now, you should be wondering what &lsquo;HBox&rsquo; and &lsquo;VBox&rsquo; are. I&rsquo;m pretty sure the V and H stand for vertical and horizontal, and they&rsquo;re both really really useful for aligning stuff in your interface. In this example, we used &lsquo;VBox&rsquo; at the root because all our elements are going to be stacked vertically in the form. Each element in this &lsquo;stack&rsquo; is going to be wrapped inside an &lsquo;HBox&rsquo; element, which will easily let us handle the horizontal alignment for that element.</p>
+
+<p>Right now, our hierarchy contains just one VBox, and an HBox inside that. Go look for a &lsquo;Label&rsquo; in the library and add it under the &lsquo;HBox&rsquo;. Select the newly added label, go to its properties and change the text content to &lsquo;Login&rsquo;, the font size to 56, the text fill to white, and choose a font family for it (I&rsquo;m using Consolas). Then, select the HBox element that the label is wrapped inside, and set its &lsquo;Alignment&rsquo; property to &lsquo;CENTER&rsquo;.</p>
+
+<p><img src="/gui-with-javafx-1/HBox_Alignment.png" alt="HBox Alignment" /></p>
+
+<p>This should center the &lsquo;Login&rsquo; text horizontally. While we&rsquo;re at it, why don&rsquo;t we properly align our VBox element as well: select the VBox at the root, go to properties and set its alignment to &lsquo;CENTER&rsquo; as well.</p>
+
+<p>Now you&rsquo;ll notice we have a lot of empty space at the top and bottom. Let&rsquo;s fix that: select the VBox, go to &lsquo;Layout&rsquo; on the right sidebar, scroll down to the &lsquo;Size&rsquo; section, and set the &lsquo;Pref Width&rsquo; and &lsquo;Pref Height&rsquo; properties to &lsquo;USE_COMPUTED_SIZE&rsquo;. This way, its height and width will be set to however much is needed by the elements nested inside it.</p>
+
+<p><img src="/gui-with-javafx-1/VBox_Layout.png" alt="VBox Layout" /></p>
+
+<p>Enough about that, let&rsquo;s move on with our form. Add another HBox element under VBox. Set its alignment to &lsquo;CENTER&rsquo; as well. Then, add a Label element and a TextField element inside it. Set the Label content to &lsquo;Username: &lsquo;, change its color to white, and choose an appropriate font size and family. Then, select the label and go to &lsquo;Layout&rsquo; on the right sidebar. In the &lsquo;VBox Constraints&rsquo; section at the top, you&rsquo;ll see a &lsquo;Margin&rsquo; property. Edit the values to set the distance between the label and the TextField. Then, go to hierarchy, open the context menu for the HBox and duplicate it for a &lsquo;Password&rsquo; field (change the text content of the second label to &lsquo;Password: &lsquo;). Set the margins as appropriate. After that, add another HBox element, and then two Button elements under that. Set the HBox alignment to &lsquo;CENTER_RIGHT&rsquo; this time. Change the content of one Button to &lsquo;Cancel&rsquo; and the other to &lsquo;Submit&rsquo;. Again, set the margins for the buttons as appropriate.</p>
+
+<p>Here&rsquo;s what mine looks like:
+<img src="/gui-with-javafx-1/Final_Interface.png" alt="Final interface" /></p>
+
+<p>That&rsquo;s it for our interface! The toolbar at the top has an option to preview the window (or use the shortcut Ctrl+P). Now, save the file into the <code>./src/main/resources</code> directory as &lsquo;Login.fxml&rsquo;. The <code>src/main/resources</code> directory is where we&rsquo;ll be storing the .fxml file(s) for our program.</p>
+
+<p>This turned out to be longer than I had expected, so I&rsquo;m just gonna split this into two parts. In the next part, we&rsquo;ll get to setting up a controller for our scene, and using it to glue together our application logic with the interface.</p>
+
+<h1 id="toc_4">👋<a href="#toc_4" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h1>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://quantomistro.github.io/tags/tutorial">tutorial</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1666 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-12 18:00 &#43;0800</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="https://quantomistro.github.io/posts/starting-a-blog/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Starting a blog</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://quantomistro.github.io/">quantomistro</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://quantomistro.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+	<script src="https://quantomistro.github.io/js/main.min.35ccbf1cdceb91e4c64c06b5d009d6e2977fafe56beda7762febd4e67528d2ac.js" integrity="sha256-Ncy/HNzrkeTGTAa10AnW4pd/r+Vr7ad2L+vU5nUo0qw="></script>
+
+</body>
+
+</html>
