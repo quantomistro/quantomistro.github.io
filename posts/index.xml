@@ -81,16 +81,24 @@ Enter source package (default: project): project
 <p>Once that&rsquo;s done, it&rsquo;ll generate a few files and sub-directories:</p>
 
 <pre><code>project/
-   .gitignore
-   build.gradle
-   gradlew
-   gradlew.bat
-   settings.gradle
-   .gradle/
-   gradle/
-   src/
-      main/
-      test/
+├─ .gradle/
+│   └─ (... gradle stuff)
+├─ gradle/
+│   └─ (... more gradle stuff)
+├─ src/
+│   ├─ main/
+│   │   ├─ java/
+│   │   │   └─ App.java
+│   │   └─ resources/
+│   └─ test/
+│       ├─ java/
+│       │   └─ AppTest.java
+│       └─ resources/
+├─ .gitignore
+├─ build.gradle
+├─ gradlew
+├─ gradlew.bat
+└─ settings.gradle
 </code></pre>
 
 <p>There&rsquo;s build files and settings files and some other directories gradle uses, but we mostly won&rsquo;t need to concern ourselves with those. We&rsquo;ll be working in the <code>src/main</code> directory most of the time.</p>
