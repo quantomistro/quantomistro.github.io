@@ -162,15 +162,15 @@ Enter source package (default: project): project
 			<pubDate>Mon, 15 Jul 2019 00:38:43 +0800</pubDate>
 			
 			<guid>https://quantomistro.github.io/posts/starting-a-blog/</guid>
-			<description>Sometime during 2018 I had the very original idea of starting my own blog. So, I started one, and then forgot about it, and now I&amp;rsquo;ve started another one. Thankfully, my previous experience had taught my just how hard it can be to think of new ideas for blog posts, which is why I came prepared this time.
+			<description>Sometime during 2018 I had the very original idea of starting my own blog. So, I started one, and then forgot about it, and now I&amp;rsquo;ve started another one. Thankfully, my previous experience had taught me just how hard it can be to think of new ideas for blog posts, which is why I came prepared this time.
 For my first blog post, I&amp;rsquo;ll be talking about how I set up this blog.</description>
 			<content type="html"><![CDATA[
 
-<p>Sometime during 2018 I had the very original idea of starting my own blog. So, I started one, and then forgot about it, and now I&rsquo;ve started another one. Thankfully, my previous experience had taught my just how hard it can be to think of new ideas for blog posts, which is why I came prepared this time.</p>
+<p>Sometime during 2018 I had the very original idea of starting my own blog. So, I started one, and then forgot about it, and now I&rsquo;ve started another one. Thankfully, my previous experience had taught me just how hard it can be to think of new ideas for blog posts, which is why I came prepared this time.</p>
 
 <h3 id="for-my-first-blog-post-i-ll-be-talking-about-how-i-set-up-this-blog">For my first blog post, I&rsquo;ll be talking about how I set up this blog.</h3>
 
-<p>My <em>first</em> blog was made with <a href="https://wordpress.com">WordPress</a>. It wasn&rsquo;t the most pleasant experience for me. Don&rsquo;t get me wrong, WP has its benefits. A simple interface, plenty of themes, and lots of other bells and whistles for your blogging site. But WP didn&rsquo;t seem right to me. It&rsquo;s very easy to get carried away with all those plugins, themes, stats and whatnot. Oftentimes it also felt rather slow and limiting. All I wanted was a place to put my opinions, quickly and easily, without sacrificing too much flexibility and control.</p>
+<p>My <em>first</em> blog was made with <a href="https://wordpress.com">WordPress</a>. It wasn&rsquo;t the most pleasant experience for me. Don&rsquo;t get me wrong, WP has its benefits. A simple interface, plenty of themes, and lots of other bells and whistles for your blogging site. But WP didn&rsquo;t seem right to me. It&rsquo;s very easy to get carried away with all those plugins, themes, stats and whatnot. Oftentimes it also felt rather slow and limiting. All I wanted was a place to put my opinions, quickly and easily, without sacrificing too much flexibility or control.</p>
 
 <h3 id="enter-github-pages">Enter GitHub Pages</h3>
 
@@ -178,11 +178,13 @@ For my first blog post, I&amp;rsquo;ll be talking about how I set up this blog.<
 
 <h3 id="static-site-generators">Static site generators</h3>
 
-<p>Static site generators are just that: programs to generate your static site for you, ready to be published to your hosting service. There are several good ones out there, with <a href="https://jekyllrb.com/">Jekyll</a> being the one that sticks out most. It&rsquo;s popular and recommended by GitHub Pages, and I&rsquo;m sure it&rsquo;s nice and all but it&rsquo;s built on Ruby and I didn&rsquo;t feel like installing Ruby so I decided to use <a href="https://blog.getpelican.com/">Pelican</a> instead, which is built on Python (which I had already installed). I was admittedly a bit confused at first, but managed to pull together a nice-looking static site after going through some good tutorials like <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">this one</a> and <a href="https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html">this one</a>.</p>
+<p>Static site generators are just that: programs to generate your static site for you, ready to be published to your hosting service. There are several good ones out there, with <a href="https://jekyllrb.com/">Jekyll</a> being the one that sticks out most. It&rsquo;s popular and recommended by GitHub Pages, and I&rsquo;m sure it&rsquo;s nice and all but it&rsquo;s built on Ruby and I didn&rsquo;t feel like installing Ruby on my machine so I decided to use <a href="https://blog.getpelican.com/">Pelican</a> instead, which is built on Python (which I had already installed). I was admittedly a bit confused at first, but managed to pull together a nice-looking static site after going through some good tutorials like <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">this one</a> and <a href="https://www.fullstackpython.com/blog/generating-static-websites-pelican-jinja2-markdown.html">this one</a>.</p>
 
 <p>Everything was nice for a few days until I wanted to change my theme and get a better one. You can find lots of themes for pelican <a href="http://pelicanthemes.com/">here</a>, but none of them clicked for me, so I decided to switch to <a href="https://gohugo.io">Hugo</a> after hearing good things about it from a friend. Hugo&rsquo;s praise was well-deserved. It comes as a standalone binary, is extremely fast and configurable, and has a ton of pretty themes you can browse over <a href="https://themes.gohugo.io">here</a>. I went through plenty of them and picked out <a href="https://themes.gohugo.io/hermit/">hermit</a> as my favorite, which is the current theme for this blog (as of the writing of this post).</p>
 
 <p>You can learn how to set up your blog using Hugo <a href="https://blog.appernetic.io/2016/04/09/how-to-set-up-a-static-hugo-website-on-github-pages-in-2-minutes/">over here</a>, and you can learn more about using GitHub Pages <a href="https://guides.github.com/features/pages/">over here</a>. Here&rsquo;s another handy link if you feel like <a href="https://www.smashingmagazine.com/2019/05/switch-wordpress-hugo/">switching from WordPress to Hugo</a>!</p>
+
+<p>(I&rsquo;m not being paid by Hugo or anything, I just really like using it)</p>
 
 <h1 id="toc_3">👋</h1>
 ]]></content>
