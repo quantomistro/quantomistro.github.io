@@ -109,44 +109,44 @@ Enter source package (default: project): project
 
 <p>Fire up the SceneBuilder, and choose &lsquo;New Project&rsquo;. You&rsquo;ll see a few options you can start with - empty, basic and complex for desktop, and then empty and basic for mobile. For now, just go ahead and choose the empty option at the beginning.</p>
 
-<p><img src="/gui-with-javafx-1/Layout_Options.png" alt="Scenebuilder Project Options" /></p>
+<p><img src="/images/gui-with-javafx-1/Layout_Options.png" alt="Scenebuilder Project Options" /></p>
 
 <p>You should see two sidebars on your left and right, and then your GUI in the middle. On the left sidebar, under &lsquo;Library&rsquo;, you&rsquo;ll see lots and lots of the components that JavaFX provides for you to build your interface. This includes stuff like input fields, labels, buttons, panes, and so on. There&rsquo;s also a handy search bar for these at the top. After that, under &lsquo;Document&rsquo; you&rsquo;ll see your hierarchy - basically, how your GUI components are structured in the underlying FXML. There&rsquo;s also a &lsquo;Controller&rsquo; tab below that - this is for our Java code associated with this scene. Usually, you&rsquo;ll have a controller for each scene. This helps us nicely organize our UI and logic.</p>
 
-<p><img src="/gui-with-javafx-1/Left_Sidebar.png" alt="Left Sidebar" /></p>
+<p><img src="/images/gui-with-javafx-1/Left_Sidebar.png" alt="Left Sidebar" /></p>
 
 <p>Then, on the right sidebar, you have the &lsquo;Inspector&rsquo; tab, which will show you the properties, layout and associated code for the selected component.</p>
 
-<p><img src="/gui-with-javafx-1/Right_Sidebar.png" alt="Right Sidebar" /></p>
+<p><img src="/images/gui-with-javafx-1/Right_Sidebar.png" alt="Right Sidebar" /></p>
 
 <h2 id="a-simple-login-form">A simple login form</h2>
 
 <p>For this example, we&rsquo;ll build a very very simple login form. Go to the Library, look for &lsquo;VBox&rsquo;, and drag it to the center. It should also show up in your hierarchy on the left sidebar.</p>
 
-<p><img src="/gui-with-javafx-1/Select_VBox.png" alt="Select VBox" /></p>
+<p><img src="/images/gui-with-javafx-1/Select_VBox.png" alt="Select VBox" /></p>
 
 <p>One cool thing about JavaFX is that, aside from being able to use FXML to describe your interface, it also allows us to use CSS to style our elements. The Scenebuilder allows us to easily add, edit and remove the CSS rules for our elements. Let&rsquo;s try that out by giving our form a dark theme.</p>
 
 <p>First, select the VBox element we just added to the hierarchy. You should see all its properties in the right sidebar. Go to the &lsquo;JavaFX CSS&rsquo; section, and click the input field under &lsquo;Style&rsquo;. Select <code>-fx-background-color</code> from the drop-down menu that pops up (if it doesn&rsquo;t, just type it in). Then on the right, enter the value for this property. I went with <code>#333333</code>. You should see the GUI in the middle update as well.</p>
 
-<p><img src="/gui-with-javafx-1/Set_Bg_Color.png" alt="Set Background Color" /></p>
+<p><img src="/images/gui-with-javafx-1/Set_Bg_Color.png" alt="Set Background Color" /></p>
 
 <p>Next, go to the library and look for &lsquo;HBox&rsquo;, and add it to your hierarchy. By now, you should be wondering what &lsquo;HBox&rsquo; and &lsquo;VBox&rsquo; are. I&rsquo;m pretty sure the V and H stand for vertical and horizontal, and they&rsquo;re both really really useful for aligning stuff in your interface. In this example, we used &lsquo;VBox&rsquo; at the root because all our elements are going to be stacked vertically in the form. Each element in this &lsquo;stack&rsquo; is going to be wrapped inside an &lsquo;HBox&rsquo; element, which will easily let us handle the horizontal alignment for that element.</p>
 
 <p>Right now, our hierarchy contains just one VBox, and an HBox inside that. Go look for a &lsquo;Label&rsquo; in the library and add it under the &lsquo;HBox&rsquo;. Select the newly added label, go to its properties and change the text content to &lsquo;Login&rsquo;, the font size to 56, the text fill to white, and choose a font family for it (I&rsquo;m using Consolas). Then, select the HBox element that the label is wrapped inside, and set its &lsquo;Alignment&rsquo; property to &lsquo;CENTER&rsquo;.</p>
 
-<p><img src="/gui-with-javafx-1/HBox_Alignment.png" alt="HBox Alignment" /></p>
+<p><img src="/images/gui-with-javafx-1/HBox_Alignment.png" alt="HBox Alignment" /></p>
 
 <p>This should center the &lsquo;Login&rsquo; text horizontally. While we&rsquo;re at it, why don&rsquo;t we properly align our VBox element as well: select the VBox at the root, go to properties and set its alignment to &lsquo;CENTER&rsquo; as well.</p>
 
 <p>Now you&rsquo;ll notice we have a lot of empty space at the top and bottom. Let&rsquo;s fix that: select the VBox, go to &lsquo;Layout&rsquo; on the right sidebar, scroll down to the &lsquo;Size&rsquo; section, and set the &lsquo;Pref Width&rsquo; and &lsquo;Pref Height&rsquo; properties to &lsquo;USE_COMPUTED_SIZE&rsquo;. This way, its height and width will be set to however much is needed by the elements nested inside it.</p>
 
-<p><img src="/gui-with-javafx-1/VBox_Layout.png" alt="VBox Layout" /></p>
+<p><img src="/images/gui-with-javafx-1/VBox_Layout.png" alt="VBox Layout" /></p>
 
 <p>Enough about that, let&rsquo;s move on with our form. Add another HBox element under VBox. Set its alignment to &lsquo;CENTER&rsquo; as well. Then, add a Label element and a TextField element inside it. Set the Label content to &lsquo;Username: &lsquo;, change its color to white, and choose an appropriate font size and family. Then, select the label and go to &lsquo;Layout&rsquo; on the right sidebar. In the &lsquo;VBox Constraints&rsquo; section at the top, you&rsquo;ll see a &lsquo;Margin&rsquo; property. Edit the values to set the distance between the label and the TextField. Then, go to hierarchy, open the context menu for the HBox and duplicate it for a &lsquo;Password&rsquo; field (change the text content of the second label to &lsquo;Password: &lsquo;). Set the margins as appropriate. After that, add another HBox element, and then two Button elements under that. Set the HBox alignment to &lsquo;CENTER_RIGHT&rsquo; this time. Change the content of one Button to &lsquo;Cancel&rsquo; and the other to &lsquo;Submit&rsquo;. Again, set the margins for the buttons as appropriate.</p>
 
 <p>Here&rsquo;s what mine looks like:
-<img src="/gui-with-javafx-1/Final_Interface.png" alt="Final interface" /></p>
+<img src="/images/gui-with-javafx-1/Final_Interface.png" alt="Final interface" /></p>
 
 <p>That&rsquo;s it for our interface! The toolbar at the top has an option to preview the window (or use the shortcut Ctrl+P). Now, save the file into the <code>./src/main/resources</code> directory as &lsquo;Login.fxml&rsquo;. The <code>src/main/resources</code> directory is where we&rsquo;ll be storing the .fxml file(s) for our program.</p>
 
