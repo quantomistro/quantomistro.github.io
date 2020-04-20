@@ -20,6 +20,12 @@
   </url>
   
   <url>
+    <loc>https://quantomistro.github.io/tags/programming/</loc>
+    <lastmod>2020-04-12T18:00:47+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://quantomistro.github.io/</loc>
     <lastmod>2020-04-12T18:00:47+08:00</lastmod>
     <priority>0</priority>
@@ -42,7 +48,7 @@
   </url>
   
   <url>
-    <loc>https://quantomistro.github.io/tags/misc/</loc>
+    <loc>https://quantomistro.github.io/tags/meta/</loc>
     <lastmod>2019-07-15T00:38:43+08:00</lastmod>
     <priority>0</priority>
   </url>
