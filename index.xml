@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 12 Apr 2020 18:00:47 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2020 20:43:38 +0800</lastBuildDate>
     
 	<atom:link href="https://quantomistro.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GUI With JavaFX (2)</title>
+      <link>https://quantomistro.github.io/posts/gui-with-javafx-2/</link>
+      <pubDate>Tue, 14 Apr 2020 20:43:38 +0800</pubDate>
+      
+      <guid>https://quantomistro.github.io/posts/gui-with-javafx-2/</guid>
+      <description>This is part 2 of my tutorial on making a GUI application with JavaFX. Part 1 was mostly about setting up the project and using the Scenebuilder to create our interface. In this part, we&amp;rsquo;re going to create a controller for our scene and use it to connect our application logic with the UI.
+Right now, this is what my ./src directory looks like:
+src/ ├─ main/ │ ├─ java/ │ │ └─ App.</description>
+    </item>
     
     <item>
       <title>GUI With JavaFX (1)</title>
