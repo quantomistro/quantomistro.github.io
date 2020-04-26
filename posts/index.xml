@@ -231,7 +231,7 @@ Enter source package (default: project): project
 
 </code></pre>
 
-<p>The type of project will be &lsquo;application&rsquo; - option 2. This will generate some useful gradle tasks for us. The implementation language is, obviously, java. The build script DSL I&rsquo;m using is Groovy - if you have no idea what this is for, then you should probably choose groovy as well because it&rsquo;s not very relevant here. The test framework isn&rsquo;t very relevant either, because I&rsquo;m a bad programmer who&rsquo;s too lazy to write tests (obviously joking - please make sure you write proper tests for all your code!).</p>
+<p>The type of project will be &lsquo;application&rsquo; - option 2. This will generate some useful gradle tasks for us. The implementation language is, obviously, java. The build script DSL I&rsquo;m using is Groovy - if you have no idea what this is for, then you should probably choose groovy as well because it&rsquo;s not very relevant here. The test framework isn&rsquo;t very relevant either, because tests don&rsquo;t matter (obviously joking - they just don&rsquo;t matter <em>right now</em>. Please make sure you write proper tests for all your code!).</p>
 
 <p>It&rsquo;ll also ask for your project name and source package. The defaults should be fine.</p>
 
