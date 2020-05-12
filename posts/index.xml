@@ -6,13 +6,256 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Tue, 14 Apr 2020 20:43:38 +0800</lastBuildDate>
+		<lastBuildDate>Tue, 12 May 2020 02:51:43 +0800</lastBuildDate>
 		<atom:link href="https://quantomistro.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Theming With CSS Variables</title>
+			<link>https://quantomistro.github.io/posts/theming-with-css-variables/</link>
+			<pubDate>Tue, 12 May 2020 02:51:43 +0800</pubDate>
+			
+			<guid>https://quantomistro.github.io/posts/theming-with-css-variables/</guid>
+			<description>A few months ago I thought to myself, &amp;ldquo;I should make a real-time chatting web application&amp;rdquo;. So I added that to my growing list of ongoing projects, and started working on it after convincing a few other friends to join me. I started this project partly because after learning programming for so long, I wanted to give myself a bigger challenge, and test my skills by trying to build a proper (like a proper) application.</description>
+			<content type="html"><![CDATA[
+
+<p>A few months ago I thought to myself, &ldquo;I should make a real-time chatting web application&rdquo;. So I added that to my growing list of ongoing projects, and started working on it after convincing a few other friends to join me. I started this project partly because after learning programming for so long, I wanted to give myself a bigger challenge, and test my skills by trying to build a proper (like a <em>proper</em>) application. The rest of it was because I was itching to try out <a href="https://elixir-lang.org">Elixir</a>, the hip new concurrency-based functional programming language that runs on the BEAM VM (might make a post on it sometime). With Elixir comes the excellent web framework <a href="https://www.phoenixframework.org">Phoenix</a>. While trying to figure out my way around Phoenix and its <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC pattern</a>, I kept struggling with the layouts and HTML templates and the static js/css assets. I realized how little I knew about front-end web development and design. 🙁</p>
+
+<p>Now I <em>have</em> done some of the exercises and lessons on freecodecamp, but that was a long time ago and I&rsquo;d forgotten most of it. So I went back to freecodecamp, did a few lessons on HTML and CSS, then tried this website and that blog-post and other tutorials while trying to familiarize myself with latest best practices. And then I stumbled across variables in CSS! <em>Native</em> variables in CSS!</p>
+
+<p>This means we can make our CSS even more DRY. This means more maintainable code. It also makes development and testing easier, and makes it easy to do cool stuff like adding themes to our webpage. Yes, that&rsquo;s what this blog post is about. Finally.</p>
+
+<hr />
+
+<p>For this tutorial, we&rsquo;re going to make a simple sign-up page with a button at the top that let&rsquo;s the user switch from the default light-mode to a dark-mode theme, using CSS variables. First, the html (I&rsquo;m just throwing all of the html here so there&rsquo;s less back and forth between this and the css):</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Sign up!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;./style.css&#34;</span><span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;toggle-theme&#34;</span><span class="p">&gt;</span>🌓<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;border-primary&#34;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;formheading&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>👋 Sign up<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;formdata&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Username&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;password&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Password&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;email&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Email&#34;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;border-primary&#34;</span><span class="p">&gt;</span>Sign up<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span>Already have an account? <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;#&#34;</span><span class="p">&gt;</span>Sign in!<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;./index.js&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></pre></div>
+<p>It&rsquo;s basic stuff, we&rsquo;re just defining the layout.</p>
+
+<p>I&rsquo;ve also been learning Flexbox and how to make stuff responsive, so we&rsquo;ll use flex to align our content, and <code>vh</code>/<code>vw</code> for size units in our CSS.</p>
+
+<blockquote>
+<p>If you&rsquo;re in a hurry, you can just copy/paste all the css and html given below, and move on to the <a href="#css-variables">CSS Variables</a> section to learn about CSS variables.</p>
+</blockquote>
+
+<p>For now, we&rsquo;re just going to start off by adding some basic CSS, so create a <code>style.css</code> file next to your html file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">justify-content</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+    <span class="k">align-items</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>We use flexbox to center our container both vertically (align-items) and horizontally (justify-content).</p>
+
+<p>After that, we style the form element:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">form</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column</span><span class="p">;</span>
+    <span class="k">justify-content</span><span class="p">:</span> <span class="kc">space</span><span class="o">-</span><span class="n">between</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">2</span><span class="kt">vh</span> <span class="mi">2</span><span class="kt">vw</span> <span class="mi">4</span><span class="kt">vh</span> <span class="mi">2</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="k">min-width</span><span class="p">:</span> <span class="mi">25</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="k">min-height</span><span class="p">:</span> <span class="mi">30</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">border-width</span><span class="p">:</span> <span class="mi">1</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">border-radius</span><span class="p">:</span> <span class="mi">5</span><span class="kt">vh</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Again, we use flexbox to align its contents, set the borders and padding for it, and the min-height and min-width to make sure it resizes properly.</p>
+
+<p>Next, we have the two <code>#formheading</code> and <code>#formdata</code> elements inside our form:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">#</span><span class="nn">formheading</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">row</span><span class="p">;</span>
+    <span class="k">padding-bottom</span><span class="p">:</span> <span class="mi">2</span><span class="kt">vh</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">formdata</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">flex-direction</span><span class="p">:</span> <span class="kc">column</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>For the <code>#formheading</code>, the flex-direction is set to row so that any other text elements added will show horizontally. For <code>#formdata</code>, it&rsquo;s set to column so that our input fields show up stacked properly.</p>
+
+<p>Now the input fields:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">input</span> <span class="p">{</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">1</span><span class="kt">vh</span> <span class="mi">1</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">1</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="kc">sans-serif</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">transparent</span><span class="p">;</span>
+    <span class="k">color</span><span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+    <span class="k">border-style</span><span class="p">:</span> <span class="kc">solid</span><span class="p">;</span>
+    <span class="k">border-width</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span><span class="kt">vh</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">border-color</span><span class="p">:</span> <span class="kc">lightgrey</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">input</span><span class="p">:</span><span class="nd">focus</span> <span class="p">{</span>
+    <span class="k">border-color</span><span class="p">:</span> <span class="kc">lightgreen</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>We set their padding and borders, and have the border change colors when it&rsquo;s focused.</p>
+
+<p>Next we&rsquo;ll style the button:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">button</span> <span class="p">{</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">1</span><span class="kt">vh</span> <span class="mi">1</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="k">margin-top</span><span class="p">:</span> <span class="mi">2</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
+    <span class="k">max-width</span><span class="p">:</span> <span class="mi">30</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="kc">sans-serif</span><span class="p">;</span>
+    <span class="k">color</span><span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">transparent</span><span class="p">;</span>
+    <span class="k">border-radius</span><span class="p">:</span> <span class="mf">1.5</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">pointer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">button</span><span class="p">:</span><span class="nd">active</span> <span class="p">{</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="kc">lightgreen</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Very similar to the input fields - we style the borders, add some padding, colors, make it change colors when clicked and so on.</p>
+
+<p>If you noticed in the html, our button element and our form element both have a <code>border-primary</code> class too, for styling their borders, so let&rsquo;s do that too:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">border-primary</span> <span class="p">{</span>
+    <span class="k">border-style</span><span class="p">:</span> <span class="kc">solid</span><span class="p">;</span>
+    <span class="k">border-color</span><span class="p">:</span> <span class="kc">lightgreen</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Let&rsquo;s also style the text content of our page, and give it some colors:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">h2</span><span class="o">,</span>
+<span class="nt">h5</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">lightgreen</span><span class="p">;</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="kc">sans-serif</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">a</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+    <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Finally, the CSS for our <code>#toggle-theme</code> button:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">#</span><span class="nn">toggle-theme</span> <span class="p">{</span>
+    <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span>
+    <span class="k">top</span><span class="p">:</span> <span class="mi">1</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">left</span><span class="p">:</span> <span class="mi">1</span><span class="kt">vw</span><span class="p">;</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mi">4</span><span class="kt">vh</span><span class="p">;</span>
+    <span class="k">cursor</span><span class="p">:</span> <span class="kc">pointer</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Alright! That&rsquo;s our HTML and CSS done. Now we can start adding CSS variables and, with a few lines of javascript, we&rsquo;ll be able to click our toggle theme button and switch between light-mode and dark-mode.</p>
+
+<h2 id="css-variables">CSS Variables</h2>
+
+<p>Variables in CSS are, of course, a little different from variables in other <em>programming</em> languages. They&rsquo;re prefixed with two hyphens, like so: <code>--my-variable</code>. The syntax for defining variables is easy enough:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">html</span> <span class="p">{</span>
+    <span class="nv">--my-variable</span><span class="p">:</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>The value can be any standard CSS value, like a font family or size or color and so on.</p>
+
+<p>After defining your variables, you need to use the <code>var()</code> function to access them:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">html</span> <span class="p">{</span>
+    <span class="n">property</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">my</span><span class="o">-</span><span class="n">variable</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<blockquote>
+<p>I know, it&rsquo;s pretty funky syntax, especially when you&rsquo;ve got lots of variables in your css (and even more so when you&rsquo;re using variables as fallbacks to variables), but at least the usefulness far outweighs this.</p>
+</blockquote>
+
+<p>You&rsquo;ll notice in the first example that the variable has been defined inside the block for the <code>html</code> element. This is important, because, like other programming languages, variables in CSS also have scopes. Variables need to be defined in a certain scope, and then they can be used anywhere within that scope. In the example above, the scope is <code>html</code>, and so <code>--my-variable</code> can be used within that element and all its children as well.</p>
+
+<p>Since you&rsquo;ll often be using the same variables throughout your entire stylesheet, it is common to (<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">according to MDN</a>) define them on the <code>:root</code> pseudo-class:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">:</span><span class="nd">root</span> <span class="p">{</span>
+    <span class="nv">--font</span><span class="p">:</span> <span class="n">Roboto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span> <span class="p">{</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">font</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>The <code>var()</code> function also lets you define fallback values in case something goes wrong with applying the actual value of the variable, which is pretty useful:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">:</span><span class="nd">root</span> <span class="p">{</span>
+    <span class="nv">--font</span><span class="p">:</span> <span class="n">Roboto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h1</span> <span class="p">{</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">font</span><span class="p">,</span> <span class="kc">sans-serif</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span> <span class="p">{</span>
+    <span class="k">font-family</span><span class="p">:</span> <span class="nf">var</span><span class="p">(</span><span class="o">--</span><span class="n">font</span><span class="p">,</span> <span class="kc">serif</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<p>In this example, if the font <code>Roboto</code> isn&rsquo;t available, then it will fall back to the values we&rsquo;ve given - <code>sans-serif</code> for h1, and <code>serif</code> for h2.</p>
+
+<p>Now let&rsquo;s use all this to (finally) start adding the dark-mode theme to our sign up page. First we define some variables on the <code>:root</code> pseudo-class:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="p">:</span><span class="nd">root</span> <span class="p">{</span>
+    <span class="c">/* Default theme variables */</span>
+    <span class="nv">--bg-color</span><span class="p">:</span> <span class="kc">white</span><span class="p">;</span>
+    <span class="nv">--inactive-border</span><span class="p">:</span> <span class="kc">lightgrey</span><span class="p">;</span>
+    <span class="nv">--font-color</span><span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+
+    <span class="nv">--primary-color</span><span class="p">:</span> <span class="kc">lightgreen</span><span class="p">;</span>
+    <span class="nv">--secondary-color</span><span class="p">:</span> <span class="kc">green</span><span class="p">;</span>
+    <span class="nv">--primary-font</span><span class="p">:</span> <span class="n">Roboto</span><span class="p">;</span>
+    <span class="nv">--secondary-font</span><span class="p">:</span> <span class="n">Roboto</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>Using this, we&rsquo;ve defined the variables for our &ldquo;default&rdquo; theme - light-mode in this case. Aside from the default theme variables, I also decided to define variables for the primary, secondary colors and fonts on our page. This is also really useful because it lets you easily test different color schemes and see which ones work, or even create multiple color schemes for different themes.</p>
+
+<p>Now that we&rsquo;ve defined our variables for the default theme, we need to apply these variables throughout our stylesheet. Replace all the <code>lightgreen</code>s with <code>var(--primary-color)</code>, all the <code>green</code>s with <code>var(--secondary-color)</code>, and so on. If you&rsquo;re a lazy programmer, you can use your editor&rsquo;s Find and Replace function to do this quickly for all the variables we&rsquo;ve defined, or if you&rsquo;re a hard-working programmer, you can do it one by one for each rule.</p>
+
+<p>Once that&rsquo;s done, open the html page in your browser to make sure it looks the same as before. If it does, good job, the variables work properly. If it doesn&rsquo;t, then you&rsquo;ve probably made some typo that needs to be fixed.</p>
+
+<h2 id="adding-the-dark-mode">Adding the dark-mode</h2>
+
+<p>The way our dark-mode will work is that our variable definitions for dark-mode colors will go inside the scope of the <code>.dark-mode</code> class. This way, when we add the <code>dark-mode</code> class to our page container, all the elements using the &ldquo;default&rdquo; light-mode values from variables defined in the <code>:root</code> scope will switch to the values defined in the <code>.dark-mode</code> scope.</p>
+
+<p>Here&rsquo;s the CSS for that:</p>
+<div class="highlight"><pre class="chroma"><code class="language-css" data-lang="css"><span class="c">/* Dark theme variables */</span>
+<span class="p">.</span><span class="nc">dark-mode</span> <span class="p">{</span>
+    <span class="nv">--bg-color</span><span class="p">:</span> <span class="mh">#333</span><span class="p">;</span>
+    <span class="nv">--inactive-border</span><span class="p">:</span> <span class="kc">darkgrey</span><span class="p">;</span>
+    <span class="nv">--font-color</span><span class="p">:</span> <span class="mh">#ddd</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+<p>If you go back to your html and add the <code>.dark-mode</code> class to the container div and open the page in your browser, you should be able to see the page in our newly-defined dark-mode theme. Cool!</p>
+
+<p>The last thing left now is the javascript that allows us to toggle the theme with the button on the top-left corner. Here&rsquo;s the js for that:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">const</span> <span class="nx">themeBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&#34;#toggle-theme&#34;</span><span class="p">);</span>
+
+<span class="nx">themeBtn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;click&#34;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&#34;dark-mode&#34;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>It&rsquo;s pretty simple: we select the toggle-theme button, and add a listener for the click event which toggles the dark-mode theme from its classList. Open up the page in your browser again and test it out!</p>
+
+<p>The full code for this is on codepen.io:
+<a href="https://codepen.io/quantomistro/pen/RwWpEmO">https://codepen.io/quantomistro/pen/RwWpEmO</a></p>
+
+<h1 id="toc_2">👋</h1>
+]]></content>
+		</item>
 		
 		<item>
 			<title>GUI With JavaFX (2)</title>
 			<link>https://quantomistro.github.io/posts/gui-with-javafx-2/</link>
-			<pubDate>Tue, 14 Apr 2020 20:43:38 +0800</pubDate>
+			<pubDate>Fri, 24 Apr 2020 20:43:38 +0800</pubDate>
 			
 			<guid>https://quantomistro.github.io/posts/gui-with-javafx-2/</guid>
 			<description>This is part 2 of my tutorial on making a GUI application with JavaFX. Part 1 was mostly about setting up the project and using the Scenebuilder to create our interface. In this part, we&amp;rsquo;re going to create a controller for our scene and use it to connect our application logic with the UI.

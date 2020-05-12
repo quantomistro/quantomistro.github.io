@@ -7,15 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 14 Apr 2020 20:43:38 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2020 02:51:43 +0800</lastBuildDate>
     
 	<atom:link href="https://quantomistro.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Theming With CSS Variables</title>
+      <link>https://quantomistro.github.io/posts/theming-with-css-variables/</link>
+      <pubDate>Tue, 12 May 2020 02:51:43 +0800</pubDate>
+      
+      <guid>https://quantomistro.github.io/posts/theming-with-css-variables/</guid>
+      <description>A few months ago I thought to myself, &amp;ldquo;I should make a real-time chatting web application&amp;rdquo;. So I added that to my growing list of ongoing projects, and started working on it after convincing a few other friends to join me. I started this project partly because after learning programming for so long, I wanted to give myself a bigger challenge, and test my skills by trying to build a proper (like a proper) application.</description>
+    </item>
+    
+    <item>
       <title>GUI With JavaFX (2)</title>
       <link>https://quantomistro.github.io/posts/gui-with-javafx-2/</link>
-      <pubDate>Tue, 14 Apr 2020 20:43:38 +0800</pubDate>
+      <pubDate>Fri, 24 Apr 2020 20:43:38 +0800</pubDate>
       
       <guid>https://quantomistro.github.io/posts/gui-with-javafx-2/</guid>
       <description>This is part 2 of my tutorial on making a GUI application with JavaFX. Part 1 was mostly about setting up the project and using the Scenebuilder to create our interface. In this part, we&amp;rsquo;re going to create a controller for our scene and use it to connect our application logic with the UI.
