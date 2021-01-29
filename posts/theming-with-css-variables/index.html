@@ -32,8 +32,8 @@
 
 <!-- POST -->
 <body class="post">
-    <header class="serif">
-        <h1 class="slim">
+    <header>
+        <h1>
             Theming With CSS Variables
             <a href="http://quantomistro.github.io/posts/theming-with-css-variables/" class="anchor" aria-hidden="true">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -48,7 +48,7 @@
 
     <hr>
 
-    <main class="sans-serif">
+    <main>
         <p>A few months ago I thought to myself, “I should make a real-time chatting web application”. So I added that to my growing list of ongoing projects, and started working on it after convincing a few other friends to join me. I started this project partly because after learning programming for so long, I wanted to give myself a bigger challenge, and test my skills by trying to build a proper (like a <em>proper</em>) application. The rest of it was because I was itching to try out <a target="_blank" rel="noopener" href="https://elixir-lang.org/">Elixir</a>, the hip new concurrency-based functional programming language that runs on the BEAM VM (might make a post on it sometime). With Elixir comes the excellent web framework <a target="_blank" rel="noopener" href="https://www.phoenixframework.org/">Phoenix</a>. While trying to figure out my way around Phoenix and its <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC pattern</a>, I kept struggling with the layouts and HTML templates and the static js/css assets. I realized how little I knew about front-end web development and design. 🙁</p>
 <p>Now I <em>have</em> done some of the exercises and lessons on freecodecamp, but that was a long time ago and I’d forgotten most of it. So I went back to freecodecamp, did a few lessons on HTML and CSS, then tried this website and that blog-post and other tutorials while trying to familiarize myself with latest best practices. And then I stumbled across variables in CSS! <em>Native</em> variables in CSS!</p>
 <p>This means we can make our CSS even more DRY. This means more maintainable code. It also makes development and testing easier, and makes it easy to do cool stuff like adding themes to our webpage. Yes, that’s what this blog post is about. Finally.</p>
@@ -127,7 +127,7 @@
         
         <h3 class="sans-serif">
     <a style="color:inherit;" href="/">quantomistro</a>
-    <span style="float:right;font-weight:regular;">Λ<span>
+    <span style="float:right;font-family:var(--serif);">λ<span>
 </h3>
  
 
